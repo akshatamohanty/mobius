@@ -210,7 +210,7 @@ mobius.controller(  'graphCtrl',
             function displayGeometry(){
                 var selectedNodes = $scope.chartViewModel.getSelectedNodes(); 
 
-                var scope = angular.element(document.getElementById('threeViewport')).scope();
+                /*var scope = angular.element(document.getElementById('threeViewport')).scope();
                 var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
 
                 scope.viewportControl.refreshView();
@@ -247,7 +247,7 @@ mobius.controller(  'graphCtrl',
                          }
                      }
                  }
-                }
+                }*/
                 $rootScope.$broadcast('Update Datatable');
 
             }

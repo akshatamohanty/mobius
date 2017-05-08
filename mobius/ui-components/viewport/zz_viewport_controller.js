@@ -3,7 +3,7 @@
 // This functions of viewport directive will be invoked through mobius module
 //
 
-mobius.controller('viewportCtrl',[
+mobius.controller('viewportLayoutCtrl',[
     '$scope','$rootScope',
     function($scope,$rootScope) {
 

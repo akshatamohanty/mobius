@@ -174,14 +174,14 @@ mobius.controller('menuCtrl',['$scope','$rootScope','$timeout','consoleMsg','gen
                     $rootScope.$emit("nodeIndex", last);
 
 
-                    var scope = angular.element(document.getElementById('threeViewport')).scope();
-                    var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
+                    //var scope = angular.element(document.getElementById('threeViewport')).scope();
+                    //var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
 
 
                     setTimeout(function(
                     ){
-                        scope.$apply(function(){scope.viewportControl.refreshView();} );
-                        scopeTopo.$apply(function(){scopeTopo.topoViewportControl.refreshView();} );
+                        //if(scope !== undefined) scope.$apply(function(){scope.viewportControl.refreshView();} );
+                        //if(scope !== undefined) scopeTopo.$apply(function(){scopeTopo.topoViewportControl.refreshView();} );
                        $rootScope.$broadcast('runNewScene');
                     },0);
 

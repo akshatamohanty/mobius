@@ -33,8 +33,8 @@ angular.module('dragging', ['mouseCapture', ] )
 
 				if (!dragging) {
 					if (Math.abs(evt.pageX- x) > threshold ||
-						Math.abs(evt.pageY - y) > threshold)
-					{
+						Math.abs(evt.pageY - y) > threshold){
+						
 						dragging = true;
 
 						if (config.dragStarted) {
@@ -54,6 +54,8 @@ angular.module('dragging', ['mouseCapture', ] )
 					}
 					x = evt.pageX;
 					y = evt.pageY;
+					
+					console.log(x, y);
 				}
 	  		};
 

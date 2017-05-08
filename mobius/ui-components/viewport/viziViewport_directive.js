@@ -17,8 +17,8 @@ mobius.directive('viziViewport', function factoryVizi() {
 
             // retrieve the viewport dom element
             var container1 = elem[0];
-            var VIEWPORT_WIDTH1 =  document.getElementById('threeViewport').offsetWidth;
-            var VIEWPORT_HEIGHT1 =  document.getElementById('threeViewport').offsetHeight;
+            var VIEWPORT_WIDTH1 =  document.getElementById('viewport').offsetWidth;
+            var VIEWPORT_HEIGHT1 =  document.getElementById('viewport').offsetHeight;
 
             // vizicities variables
 
@@ -72,7 +72,7 @@ mobius.directive('viziViewport', function factoryVizi() {
 
             // clear geometries in scene1 when run
             scope.internalControlVizi.refreshView = function(){
-               //document.getElementById("viziContainer").style.display = "none";
+               document.getElementById("viziContainer").style.display = "none";
             };
 
             //

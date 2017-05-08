@@ -8,15 +8,26 @@ mobius.controller('layoutCtrl',['$scope','$rootScope','hotkeys',
         //        $scope.$emit("editProcedure");
         //    }
         //});
+        //
+        
+        $scope.layout = "singleView";
+        
+        $rootScope.$on('singleView', function(){
+            $scope.layout = "singleView";
+        });
+
+        $rootScope.$on('fourViews', function(){
+            $scope.layout = "fourViews";
+        });
 
         $scope.bodySize = document.getElementById('layout').offsetWidth;
         $scope.height = document.getElementById('layout').offsetHeight;
 
         // initial layout
-        $scope.viewportSize = $scope.bodySize * 0.35;
+        $scope.viewportSize = $scope.bodySize * 0.50;
         $scope.graphSize = $scope.bodySize * 0.20;
-        $scope.procedureSize = $scope.bodySize * 0.25;
-        $scope.toolkitSize = $scope.bodySize * 0.20;
+        $scope.procedureSize = $scope.bodySize * 0.15;
+        $scope.toolkitSize = $scope.bodySize * 0.15;
 
         $scope.viewportWidth = $scope.viewportSize +'px';
         $scope.procedureWidth = $scope.procedureSize +'px';
@@ -69,6 +80,8 @@ mobius.controller('layoutCtrl',['$scope','$rootScope','hotkeys',
             $scope.graphSize += newSize - oldSize;
             $scope.graphWidth = $scope.graphSize +'px';
         });*/
+
+
 
         var collapsedContainers = [];
 

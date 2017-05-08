@@ -74,12 +74,12 @@ mobius.directive('paramDisplay', [ 'hotkeys', 'executeService', 'generateCode', 
                                 })
                                 .then(function() {
                                     //display in the viewport according to node selection
-                                    var threescope = angular.element(document.getElementById('threeViewport')).scope();
-                                    var scopeVizi = angular.element(document.getElementById('viziViewport')).scope();
+                                   /* var threescope = angular.element(document.getElementById('threeViewport')).scope();
+                                    var scopeVizi = angular.element(document.getElementById('viziViewport')).scope();*/
                                     // var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
 
-                                    threescope.viewportControl.refreshView();
-                                    scopeVizi.viziViewportControl.refreshView();
+                                    /*threescope.viewportControl.refreshView();
+                                    scopeVizi.viziViewportControl.refreshView();*/
                                     // scopeTopo.topoViewportControl.refreshView();
 
                                     var selectedNodes = threescope.chartViewModel.getSelectedNodes();

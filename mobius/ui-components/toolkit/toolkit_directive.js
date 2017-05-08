@@ -8,7 +8,7 @@ mobius.directive('toolkit', [ 'consoleMsg', '$rootScope', function(consoleMsg, $
         template: ' <div style="padding-left: 16px;"> \
         				<div class="doormat">\
 	                    	<div style="display: inline-block;">Toolkit</div>\
-	                    </div> \
+	                    </div>\
 	                    <div style="overflow: auto; height: 100vh;">\
 		                    <div class="category-heading main-heading">Node Design</div>\
 		                    <div class="category-container">\
