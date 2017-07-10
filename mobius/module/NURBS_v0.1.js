@@ -2111,7 +2111,6 @@ MOBIUS_MODULES[MODULE_NAME] = ( function (mod){
 	 */
 	mod.lst.extend = function(list, extension_list){
 
-		console.log("ex", extension_list)
 		if(extension_list instanceof Array){
 			// do nothing
 		}

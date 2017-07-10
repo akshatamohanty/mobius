@@ -1,0 +1,23 @@
+<div>
+
+	<!-- doormat -->
+	<div class="doormat" style="z-index: 10 !important;">
+        <div>{{activeView}}</div>
+
+        <div dropdown on-toggle="toggled(open)"  class="menu-left">
+            <button class="button viewport-menu-button" dropdown-toggle
+                     style="width: 28px !important;" title="set viewport">
+                     <i class="fa fa-eye fa-lg"></i>
+                 <!--<span class="caret"></span>-->
+            </button>
+
+            <ul class="dropdown-menu " style="right: 2px!important;top:2px" >
+            	<li ng-repeat='opt in viewports'>
+            		<a href="#" ng-click = "changeView(opt.id)">{{opt.name}}</a>
+            	</li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

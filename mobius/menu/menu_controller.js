@@ -180,8 +180,8 @@ mobius.controller('menuCtrl',['$scope','$rootScope','$timeout','consoleMsg','gen
 
                     setTimeout(function(
                     ){
-                        scope.$apply(function(){scope.viewportControl.refreshView();} );
-                        scopeTopo.$apply(function(){scopeTopo.topoViewportControl.refreshView();} );
+                        //scope.$apply(function(){scope.viewportControl.refreshView();} );
+                        //scopeTopo.$apply(function(){scopeTopo.topoViewportControl.refreshView();} );
                        $rootScope.$broadcast('runNewScene');
                     },0);
 

@@ -210,15 +210,15 @@ mobius.controller(  'graphCtrl',
             function displayGeometry(){
                 var selectedNodes = $scope.chartViewModel.getSelectedNodes(); 
 
-                var scope = angular.element(document.getElementById('threeViewport')).scope();
+                /*var scope = angular.element(document.getElementById('threeViewport')).scope();
                 var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
                 var scopeVizi = angular.element(document.getElementById('viziViewport')).scope();
 
                 scope.viewportControl.refreshView();
                 scopeTopo.topoViewportControl.refreshView();
-                scopeVizi.viziViewportControl.refreshView();
+                scopeVizi.viziViewportControl.refreshView();*/
 
-                for(var i = 0; i < $scope.outputGeom.length; i++){
+                /*for(var i = 0; i < $scope.outputGeom.length; i++){
                  for(var j =0; j < selectedNodes.length; j++){
                      if($scope.outputGeom[i].name === selectedNodes[j].data.name){
                          for(var i = 0; i < $scope.outputGeom.length; i++){
@@ -253,7 +253,7 @@ mobius.controller(  'graphCtrl',
                      }
                  }
                 }
-                $rootScope.$broadcast('Update Datatable');
+                $rootScope.$broadcast('Update Datatable');*/
 
             }
 

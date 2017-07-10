@@ -85,28 +85,28 @@ mobius.directive('paramDisplay', [ 'hotkeys', 'executeService', 'generateCode', 
                         })
                         .then(function() {
                             //display in the viewport according to node selection
-                            var threescope = angular.element(document.getElementById('threeViewport')).scope();
-                            var scopeVizi = angular.element(document.getElementById('viziViewport')).scope();
+                            //var threescope = angular.element(document.getElementById('threeViewport')).scope();
+                            //var scopeVizi = angular.element(document.getElementById('viziViewport')).scope();
                             // var scopeTopo = angular.element(document.getElementById('topoViewport')).scope();
 
-                            threescope.viewportControl.refreshView();
-                            scopeVizi.viziViewportControl.refreshView();
+                            //threescope.viewportControl.refreshView();
+                            //scopeVizi.viziViewportControl.refreshView();
                             // scopeTopo.topoViewportControl.refreshView();
 
-                            var selectedNodes = threescope.chartViewModel.getSelectedNodes();
+                            /*var selectedNodes = threescope.chartViewModel.getSelectedNodes();
 
                             for(var i = 0; i < scope.outputs.length; i++){
                                 for(var j =0; j < selectedNodes.length; j++){
                                     if(scope.outputs[i].name === selectedNodes[j].data.name){
-                                        threescope.viewportControl.addGeometryToScene(scope.outputs[i].geom);
+                                        //threescope.viewportControl.addGeometryToScene(scope.outputs[i].geom);
                                     }
                                     else if(scope.outputs[i].name ==="saveGeoJSON0"){
-                                        scopeVizi.viziViewportControl.addGeometryToScene(scope.outputs[i].geomData[0][0].Value);
+                                        //scopeVizi.viziViewportControl.addGeometryToScene(scope.outputs[i].geomData[0][0].Value);
                                     }
                                 }
-                            }
+                            }*/
 
-                            $rootScope.$broadcast('Update Datatable');
+                            //$rootScope.$broadcast('Update Datatable');
                         });
                 },100);
             }

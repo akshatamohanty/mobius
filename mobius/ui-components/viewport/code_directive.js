@@ -1,5 +1,3 @@
-// javascript code fetching from factory
-
 mobius.controller('codeCtrl',[
     '$scope',
     'generateCode',
@@ -18,4 +16,16 @@ mobius.controller('codeCtrl',[
                 $scope.javascriptCode = generateCode.getJavascriptCode();
             }
         },true);
+        
     }]);
+
+
+// code-viewport-directive
+mobius.directive('codeViewport', function() {
+        return {
+            restrict: 'A',
+            template: "<div style='position: absolute; width: 100%; height: 100%;' ui-ace=\"{ mode: 'javascript', theme: 'tomorrow', onLoad: aceLoaded}\" ng-model='javascriptCode' readonly=true></div>",
+            controller: 'codeCtrl' 
+        }
+});
+
