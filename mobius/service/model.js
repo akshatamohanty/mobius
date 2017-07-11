@@ -131,7 +131,7 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
                                 }
                             }else{
                                 model.javascriptCode += connected_input_name
-                                    // + ' = MOBIUS.obj.copy('
+                                    + ' = MOBIUS.obj.copy('
                                     +' = '
                                     + output_port_name
                                     + ';';
@@ -736,6 +736,7 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
         },
 
         setOutputGeom: function(value){
+            console.log(value);
             outputGeom = value;
             findCurrentOutputGeom();
         },

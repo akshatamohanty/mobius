@@ -9,16 +9,41 @@
 // 5. set view position
 
 
-mobius.directive('threeViewport', function factory() {
+mobius.directive('threeViewport', ['$rootScope', 'generateCode', function($rootScope,  generateCode){
     return {
         restrict: 'A',
-        scope: {
-            control: '=',
-            viewModel: "="
-        },
+        /*scope: {
+            scene: "="
+        },*/
         link: function (scope, elem, attrs) {
 
             if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+            // remove directive when view is switched
+            scope.$on("$destroy",function() {
+                element.remove();
+            }); 
+
+            // listen for node click and update view
+            scope.nodeIndex = undefined;
+            $rootScope.$on("nodeIndex", function(event, message) {
+
+                if(message === undefined){
+                    console.warn("no node clicked");
+                }
+                else if(message !== "port"){
+                    scope.internalControl.refreshView();
+                    scope.nodeIndex = message;
+                    if (generateCode.getOutputGeom() != undefined){
+                        var output = generateCode.getOutputGeom();
+                        var selected = generateCode.getChartViewModel().getSelectedNodes();
+                        console.log(selected, output);
+                        
+                    }
+                    console.log("Three Viewport detected click from Node: ", scope.nodeIndex );
+                }
+
+            });
 
             scope.internalControl = scope.control || {};
             scope.internalControl.currentCate = 'Perspective';
@@ -45,9 +70,7 @@ mobius.directive('threeViewport', function factory() {
             var VIEWPORT_WIDTH = 600;//container.offsetWidth ;
             var VIEWPORT_HEIGHT = 600;//container.offsetHeight ;
 
-            console.log("viewport dimensions", VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
-
-            var scene;
+            //var scene;
             var camera,cameraLT, cameraLB, cameraRT, cameraRB;
             var  orthoCamera, orthoCameraLT, orthoCameraLB, orthoCameraRT, orthoCameraRB;
 
@@ -265,7 +288,6 @@ mobius.directive('threeViewport', function factory() {
                 rendererLB.domElement.addEventListener( 'wheel', onchange );
                 rendererRT.domElement.addEventListener( 'wheel', onchange );
                 rendererRB.domElement.addEventListener( 'wheel', onchange );
-
 
             }
 
@@ -915,19 +937,16 @@ mobius.directive('threeViewport', function factory() {
             // Render the scene
             function render() {
 
-                // TODO:
-                requestAnimationFrame(render);
-                renderer.render(scene, camera);
+                if(1/*scope.internalControl.layout === 'singleView' && scope.internalControl.showGeometry*/){
 
-                if(scope.internalControl.layout === 'singleView' && scope.internalControl.showGeometry){
                     if(document.getElementById("viewLT")){
                         document.getElementById("viewLT").remove();
                         document.getElementById("viewLB").remove();
                         document.getElementById("viewRT").remove();
                         document.getElementById("viewRB").remove();
                     }
+                    //document.getElementById("viewSingle").style.display = "inline";
                     container.appendChild(renderer.domElement);
-                    document.getElementById("viewSingle").style.display = "inline";
                     renderer.setSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
 
                     //if(wireframeMain){
@@ -1215,5 +1234,5 @@ mobius.directive('threeViewport', function factory() {
 
         }
     }
-});
+}]);
 

@@ -27,9 +27,7 @@ mobius.directive('paramDisplay', [ 'hotkeys', 'executeService', 'generateCode', 
 
                     scope.nodeIndex = message;
                     scope.interface = scope.interfaceList[scope.nodeIndex];
-
-
-
+                    console.log("param display directive detects node clicked ", scope.nodeIndex);
 
                     // todo: why is this needed?
                     setTimeout(function () {
@@ -71,6 +69,7 @@ mobius.directive('paramDisplay', [ 'hotkeys', 'executeService', 'generateCode', 
                     executeService.execute(scope.javascriptCode+ '\n return dataConversion(geomList);')
                         .then(function (data) {
                             //document.getElementById('waiting').style.display='none';
+                            console.log("Returned", data);
                             scope.showSpinner = false;
                             scope.outputs = data;
                             generateCode.setOutputGeom(data);
