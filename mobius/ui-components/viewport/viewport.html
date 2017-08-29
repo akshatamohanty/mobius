@@ -20,4 +20,13 @@
 
     </div>
 
+    <div id='viewport'>
+        <div three-viewport ng-if='selected==0'></div>
+        <div topo-viewport ng-if='selected==1'></div>
+        <div vizi-viewport id='viziViewport' ng-if='selected==2'></div>
+        <div data-viewport ng-if='selected==3'></div>
+        <div code-viewport ng-if='selected==4'></div>
+        <div text-viewport ng-if='selected==5'></div>
+    </div>
+
 </div>

@@ -20,30 +20,61 @@ mobius.directive('threeViewport', ['$rootScope', 'generateCode', function($rootS
             if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
             // remove directive when view is switched
-            scope.$on("$destroy",function() {
-                element.remove();
-            }); 
+            scope.$on('$destroy', function() {
+                elem.empty();
+                elem.remove();
+                deregisterListener();
+                scope = null;
+            });
 
             // listen for node click and update view
             scope.nodeIndex = undefined;
-            $rootScope.$on("nodeIndex", function(event, message) {
+            var deregisterListener = $rootScope.$on("nodeIndex", function(event, message) {
 
                 if(message === undefined){
                     console.warn("no node clicked");
                 }
                 else if(message !== "port"){
-                    scope.internalControl.refreshView();
-                    scope.nodeIndex = message;
-                    if (generateCode.getOutputGeom() != undefined){
-                        var output = generateCode.getOutputGeom();
-                        var selected = generateCode.getChartViewModel().getSelectedNodes();
-                        console.log(selected, output);
-                        
-                    }
-                    console.log("Three Viewport detected click from Node: ", scope.nodeIndex );
+                    updateView();
                 }
 
             });
+
+
+            var updateView = function(){
+                scope.internalControl.refreshView();
+                if (generateCode.getOutputGeom() != undefined){
+                    var output = generateCode.getOutputGeom();
+                    var selected = generateCode.getChartViewModel().getSelectedNodes();
+                    console.log("selected", selected[0]);
+
+                    for(var i=0; i < output.length; i++){
+                       if(output[i].name === selected[0].data.name){
+                            output = output[i];
+                            scope.nodeIndex = i;
+                            break;
+                       }
+                    }
+
+                    // check if geom exists
+                    // if not, convert data
+                    if (!output.converted){
+                        var conversionArr = [output];
+                        dataConversion(conversionArr);
+                        console.log("computing geom since not computed");
+                    }
+                    else{
+                        console.log("already computed; retrive");
+                    }
+
+                    // add the geometry to the viewport
+                    if (output.geom){
+                        scope.internalControl.addGeometryToScene(output.geom);
+                    }
+                }
+                console.log("Three Viewport detected click from Node: ", scope.nodeIndex );
+            }
+
 
             scope.internalControl = scope.control || {};
             scope.internalControl.currentCate = 'Perspective';

@@ -1,5 +1,5 @@
 // text editor viewport example
-mobius.directive('textViewportEditor', function() {
+mobius.directive('textViewport', function() {
         return {
             restrict: 'A',
             scope: {
@@ -8,7 +8,7 @@ mobius.directive('textViewportEditor', function() {
             template: "<div style='width: 100%; top:32px; left:0; bottom: 0; position: absolute;'>\
                             <textarea\
                                     style='width: 100%; height: 100%;'\
-                                    text-viewport-editor\
+                                    text-viewport\
                                     view-model='currentTextVersionGeom'>\
                             </textarea>\
                         </div>",
@@ -18,7 +18,7 @@ mobius.directive('textViewportEditor', function() {
                 // Serialize the data model as json and update the textarea.
                 var updateJson = function () {
 
-                    if (scope.viewModel.geom) {
+                    if (scope.viewModel && scope.viewModel.geom) {
 	                    var json = scope.viewModel.geom;
                         //var json = JSON.stringify(scope.viewModel.geom);
 
@@ -79,3 +79,4 @@ mobius.controller('textCtrl',
                 }
             });
         }]);
+

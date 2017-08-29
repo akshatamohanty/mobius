@@ -1,6 +1,8 @@
 // convert mObj to threeJS obj / data obj / topo obj
 var dataConversion = (function(data){
 
+    console.log("converting data", data);
+
     for(var i = 0; i < data.length; i++) {
         for (var m in data[i].value) {
             if (data[i].value[m] !== undefined && m !== 'FUNC_OUTPUT') {
@@ -30,6 +32,8 @@ var dataConversion = (function(data){
                 }
             }
         }
+
+        data[i].converted = true;
     }
 
     function extract (obj,geom,geomData,topo,connectorName){

@@ -5,7 +5,7 @@
 
 mobius.directive('topoViewport', function factoryTopo() {
     return {
-        restrict: 'E',
+        restrict: 'A',
         replace: true,
         scope: {
             control: '=',
@@ -17,8 +17,8 @@ mobius.directive('topoViewport', function factoryTopo() {
 
             // retrieve the viewport dom element
             var container1 = elem[0];
-            var VIEWPORT_WIDTH1 =  document.getElementById('threeViewport').offsetWidth;
-            var VIEWPORT_HEIGHT1 =  document.getElementById('threeViewport').offsetHeight;
+            var VIEWPORT_WIDTH1 =  document.getElementById('viewport').offsetWidth;
+            var VIEWPORT_HEIGHT1 =  document.getElementById('viewport').offsetHeight;
 
             var scene1,
                 camera1,camera1LT, camera1RT,camera1LB,camera1RB,

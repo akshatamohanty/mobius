@@ -81,7 +81,7 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
                 model.javascriptCode = '\n';
                 model.javascriptCode += '\n// sub-graph execution: \n';
             }else{
-                model.javascriptCode = '\n// execution: \n' +
+                model.javascriptCode = '\n// execution: \n' /*+
                     'var db = new PouchDB(\'mobiusdb\');\n'+
                     'var remoteCouch = false;\n'+
                     'function savedatabase(objtecid, objtectstring) {\n'+
@@ -98,8 +98,8 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
                 '        // handle result\n'+
                 '    }).catch(function (err) {\n'+
                 '        console.log(err);\n'+
-                '    });\n'+
-                '};\n';
+                '    })\n'+
+                '}\n';*/
             }
 
             if(!subgraph){
@@ -201,7 +201,6 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
                         }
 
                         model.javascriptCode +=  ");";
-
                         // extract items from return through label
                         // fixme name duplication or undefined name
                         for(var m =0; m < output_port_num; m++){
@@ -256,7 +255,7 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
                                 ((model.chartViewModel.nodes[sourceNodeId].disabled() === false) ||
                                 model.chartViewModel.nodes[sourceNodeId].disabled() === undefined)){
                                 model.javascriptCode += input_port_name
-                                    //+' = MOBIUS.obj.copy('
+                                    //+' = MOBIUS.obj.copy(' 
                                     + ' = '
                                     + 'output_' + model.chartViewModel.nodes[sourceNodeId].data.name
                                     + '.'
@@ -645,6 +644,7 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
     function findCurrentOutputGeom(){
         // when in root graph
         if(graphList.length === 0){
+            console.log(currentOutputGeom);
             currentOutputGeom = outputGeom;
         }else{
             // navigate to current graph
@@ -736,7 +736,6 @@ mobius.factory('generateCode', ['$rootScope',function ($rootScope) {
         },
 
         setOutputGeom: function(value){
-            console.log(value);
             outputGeom = value;
             findCurrentOutputGeom();
         },

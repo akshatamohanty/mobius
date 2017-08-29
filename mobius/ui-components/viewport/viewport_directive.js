@@ -14,7 +14,7 @@ mobius.directive('viewport', ['$compile', function($compile) {
         		{name: "Vizicities", id: 2, directive: 'vizi-viewport'},
         		{name: "Data Tables", id: 3, directive: 'data-viewport'},
         		{name: "Full Code", id: 4, directive: 'code-viewport'},
-        		{name: "Text View", id: 5, directive: 'text-viewport-editor'}
+        		{name: "Text View", id: 5, directive: 'text-viewport'}
         	];
 
         	var view;
@@ -22,10 +22,15 @@ mobius.directive('viewport', ['$compile', function($compile) {
         		scope.selected = viewport_id;
         		
         		// remove view if already existing
-        		if (view !== undefined) view.remove();
+        		if (scope.view !== undefined) {
+                    scope.view.empty();
+                    scope.view.remove();
+                    scope.view.$$childScope().$destroy();
+                    scope.view = undefined;
+                }
         		
-        		view = $compile('<div ' + scope.viewports[scope.selected].directive + '></div>')(scope);
-                elem.append(view);
+        		/*scope.view = $compile('<div ' + scope.viewports[scope.selected].directive + '></div>')(scope);
+                elem.append(scope.view);*/
 
         		scope.activeView = scope.viewports[scope.selected].name;
 

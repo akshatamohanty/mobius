@@ -2,15 +2,13 @@
  * Created by yz on 28/3/17.
  */
 
-
-mobius.directive('viziViewport', function factoryVizi() {
+mobius.directive('viziViewport', ['$rootScope', function ($rootScope) {
     return {
-        restrict: 'E',
-        replace: true,
+        restrict: 'A',
+        //replace: true,
         scope: {
             control: '='
         },
-
         link: function (scope, elem) {
 
             scope.internalControlVizi = scope.control || {};
@@ -46,9 +44,7 @@ mobius.directive('viziViewport', function factoryVizi() {
 
             // Initialization
             function initVizi(){
-
-                document.getElementById("viziViewport").style.display = "none";
-
+                //document.getElementById("viziViewport").style.display = "none";
             }
 
 
@@ -522,4 +518,4 @@ mobius.directive('viziViewport', function factoryVizi() {
             }
         }
     }
-});
+}]);
